@@ -1,1 +1,147 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/scss/bootstrap';
+
+body {
+  margin: 0;
+  background-color: #f1f1f1;
+  font-family: 'Open Sans', sans-serif;
+  height: 100vh;
+  width: 100vw;
+}
+
+.body-container {
+  position: relative;
+  display: block;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+
+  .body-header {
+    width: 100%;
+    background-color: white;
+    position: relative;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      padding: 0 20px;
+      font-size: 22px;
+      letter-spacing: -.4px;
+      font-weight: 700;
+    }
+  }
+
+  .body-content {
+    width: 100%;
+    padding: 0px 20px;
+  }
+}
+
+.vw-100 {
+  width: 100vw;
+}
+
+.modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #5d5d5d82;
+
+  .btg-modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 400px;
+    max-width: 80%;
+    min-height: 50px;
+    background-color: white;
+  }
+}
+
+.btg-table {
+  width: 100%;
+
+  th {
+    color: #777;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  tr {
+    border-bottom: 1px solid;
+    border-color: #f1f1f1
+  }
+
+  .center {
+    text-align: center !important;
+  }
+
+  .fund-td {
+    width: 40%;
+  }
+}
+
+.fund-cell {
+  display: flex;
+  line-height: 1;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0px;
+
+  .fund-logo {
+    width: 37px;
+    height: 37px;
+    border-radius: 7px;
+    margin-right: 10px;
+  }
+
+  .info {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: middle;
+    flex: 1;
+    overflow: hidden;
+    padding-inline-end: 10px;
+    max-width: fit-content;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.2;
+
+    .title {
+      margin-top: -2px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .subtitle {
+      padding-top: 1px;
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+}
+
+.transaction-state-pill {
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+
+  &.pill-open {
+    background-color: green;
+  }
+
+  &.pill-close {
+    background-color: red;
+  }
+}

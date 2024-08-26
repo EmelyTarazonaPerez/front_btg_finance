@@ -1,0 +1,25 @@
+<aside class="aside-menu">
+  <div class="nav-top">
+    <img src="../../../../assets/logoBTG.png" alt="logo" class="logo">
+    <!-- <a href="expand-button collapse">I</a> -->
+  </div>
+  <div class="user-area">
+    <div class="user-box">
+      <img class="user-icon" src="../../../../assets/userCircle.png" alt="user-icon">
+      <span class="username">{{profile?.name}}</span>
+    </div>
+  </div>
+  <hr>
+  <section class="cash-on-section">
+    <div class="cash">{{profile?.availableCash | currency}}</div>
+    <div class="text">Efectivo disponible</div>
+  </section>
+  <hr>
+  <nav>
+    <ul class="links-container">
+      <li><a routerLinkActive="active-link" routerLink="/funds">Fondos</a></li>
+      <li><a routerLinkActive="active-link" routerLink="/portfolio">Portafolio</a></li>
+      <li><a routerLinkActive="active-link" routerLink="/transactions">Historial</a></li>
+    </ul>
+  </nav>
+</aside>

@@ -1,0 +1,45 @@
+<div class="body-container">
+  <div class="body-header">
+    <span class="title">Mi portafolio</span>
+  </div>
+  <div class="body-content">
+    <table class="btg-table" *ngIf="transactionInterface">
+      <tr>
+        <th>Fondos ({{transactionInterface.length}})</th>
+        <th class="center">Monto</th>
+        <th class="center">Categoria</th>
+        <th>Fecha de apertura</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let transaction of transactionInterface; let i = index">
+        <td class="fund-td">
+          <div class="fund-cell">
+            <img class="fund-logo" src="../../../../assets/{{transaction.fund.code}}.png" alt="fund-logo">
+            <div class="info">
+              <span class="title">{{ transaction.fund.name }}</span>
+              <span class="subtitle">{{ transaction.fund.code }}</span>
+            </div>
+          </div>
+        </td>
+        <td class="center">{{ transaction.amount | currency }}</td>
+        <td class="center">{{ transaction.fund.category }}</td>
+        <td>{{ transaction.date | date:'medium' }}</td>
+        <td>
+          <button
+            class="btn btn-sm btn-danger btn-block"
+            (click)="openModal(transaction)"
+            data-bs-toggle="modal">Cancelar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngIf="modalState">
+    <cancel-fund-modal
+      [transactionInput]="transactionInput"
+      (modalState)="closeModal($event)"
+      (cancelFund)="handleCancelFund($event)">
+    </cancel-fund-modal>
+  </div>
+</div>
+

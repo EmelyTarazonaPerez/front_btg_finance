@@ -1,0 +1,39 @@
+<div class="body-container">
+  <div class="body-header">
+    <span class="title">Historial de transacciones</span>
+  </div>
+  <div class="body-content">
+    <table class="btg-table" *ngIf="transactionInterface">
+      <tr>
+        <th>Fondos</th>
+        <th class="center">Ganancia/Perdida</th>
+        <th class="center">Categoria</th>
+        <th>Fecha de apertura</th>
+        <th class="center">Tipo</th>
+        <th class="center">Estado</th>
+      </tr>
+      <tr *ngFor="let transaction of transactionInterface; let i = index">
+        <td class="fund-td">
+          <div class="fund-cell">
+            <img class="fund-logo" src="../../../../assets/{{transaction.fund.code}}.png" alt="fund-logo">
+            <div class="info">
+              <span class="title">{{ transaction.fund.name }}</span>
+              <span class="subtitle">{{ transaction.fund.code }}</span>
+            </div>
+          </div>
+        </td>
+        <td class="center earn-{{ transaction.type === 'OPEN' ? 'minus'  : 'plus' }}">{{ transaction.type === 'OPEN' ? '-'  : '+' }}{{ transaction.amount | currency }}</td>
+        <td class="center">{{ transaction.fund.category }}</td>
+        <td>{{ transaction.date | date:'medium' }}</td>
+        <td class="center">
+          <span class="transaction-state-pill pill-{{ transaction.type === 'OPEN' ? 'open'  : 'close' }}">
+            {{ transaction.type === 'OPEN' ? 'Suscripcion'  : 'Cierre' }}
+          </span>
+        </td>
+        <td class="center">
+          <span *ngIf="transaction.active">Activo</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

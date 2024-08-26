@@ -1,0 +1,33 @@
+<div class="body-container">
+  <div class="body-header">
+    <span class="title">Lista de fondos</span>
+  </div>
+  <div class="body-content">
+    <table class="btg-table">
+      <tr>
+        <th>Fondos</th>
+        <th class="center">Monto Minimo</th>
+        <th class="center">Categoria</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let fund of fundsList; let i = index">
+        <td class="fund-td">
+          <div class="fund-cell">
+            <img class="fund-logo" src="../../../../assets/{{fund.code}}.png" alt="fund-logo">
+            <div class="info">
+              <span class="title">{{ fund.name }}</span>
+              <span class="subtitle">{{ fund.code }}</span>
+            </div>
+          </div>
+        </td>
+        <td class="center">{{ fund.min_amount | currency }}</td>
+        <td class="center">{{ fund.category }}</td>
+        <td><button class="btn btn-sm btn-success btn-block"
+          (click)="openModal(fund)" data-bs-toggle="modal">Invertir</button></td>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf="modalState">
+    <app-modal [funInput]="funInput" [response]="response" (modalState)="closeModal($event)" (amountOutput)="handleAmountOutput($event)"></app-modal>
+  </div>
+</div>

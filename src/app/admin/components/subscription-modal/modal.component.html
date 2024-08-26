@@ -1,0 +1,47 @@
+<div *ngIf="funInput && profile">
+  <div class="modal-content">
+    <div class="card text-center mb-3" style="width: 30rem;">
+      <div class="card-body">
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()" style="position: absolute; top: 10px; right: 10px;"></button>
+        <span class="buy-tag">Comprar</span>
+        <div class="input-group mb-3 mt-5">
+          <span class="input-group-text">Importe $</span>
+          <input
+            [(ngModel)]="amount" type="number" class="form-control text-end"
+            (input)="changeAmount()"
+            min="{{funInput.min_amount}}"
+            (error)="funInput.min_amount > amount"
+            required>
+          <span class="input-group-text">.00</span>
+        </div>
+        <section class="fund-section">
+          <div class="fund-cell">
+            <img class="fund-logo" src="../../../../assets/{{ funInput.code }}.png" alt="fund-logo">
+            <div class="info">
+              <span class="title">{{ funInput.name }}</span>
+              <span class="subtitle">{{ funInput.code }}</span>
+            </div>
+          </div>
+          <div class="price">
+            <div>
+              <span class="min">min.</span>
+              <span>{{funInput.min_amount | currency}}</span>
+            </div>
+          </div>
+        </section>
+        <hr>
+        <section class="available-cash">
+          <span class="text">Efectivo disponible</span>
+          <span class="available-cash-number">{{profile.availableCash | currency}}</span>
+        </section>
+        <div class="m-4 success-button">
+          <button
+            (click)="emitAmount()" href="#"
+            class="btn btn-success btn-lg"
+            [disabled]="isAmountError">Invertir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
